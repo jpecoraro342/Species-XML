@@ -85,8 +85,12 @@ void parseClade(xml_node<> *clade) {
 void parseFile() {
 	xml_document<> doc;
 	xml_node<> * root_node;
-
-	ifstream theFile ("/Users/Joseph/Dropbox/College/Spring 2013/COP3530/Tree/Tree/species.xml");
+   
+    ifstream theFile ("/Users/Joseph/Dropbox/College/Spring 2013/COP3530/Tree/Tree/species.xml");
+    if (!theFile) {
+        cerr << "Error: the file specified does not exist, please change the file location" << endl;
+        exit(0);
+    }
 	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
